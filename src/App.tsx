@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Search, Plus, Building2, Mail, Phone, Globe, MapPin, Loader2, ArrowLeft, Upload, X } from 'lucide-react';
+import { Search, Plus, Building2, Mail, Phone, Globe, MapPin, Loader2, ArrowLeft, Upload, X, Maximize2} from 'lucide-react';
 import { VisitingCard, ApiResponse } from './types';
 
 function App() {
@@ -14,6 +14,7 @@ function App() {
   const cardsPerPage = 10;
   const [selectedFileName, setSelectedFileName] = useState<string>('');
   const [isUploading, setIsUploading] = useState(false);
+  const [previewImage, setPreviewImage] = useState<string | null>(null);
 
   const fetchAllCards = async () => {
     setLoading(true);
@@ -187,13 +188,16 @@ function App() {
                 <div key={card.id} className="bg-gradient-to-br from-stone-900/90 to-zinc-900/90 backdrop-blur-sm rounded-xl shadow-xl overflow-hidden hover:shadow-2xl hover:scale-[1.02] transition-all duration-300 border border-stone-800/50">
                   <div className="flex flex-col h-full">
                     {card.visiting_card_url && (
-                      <div className="relative h-48">
+                      <div className="relative h-48 group cursor-pointer" onClick={() => setPreviewImage(card.visiting_card_url)}>
                         <img
                           src={card.visiting_card_url}
                           alt={`${card.name}'s visiting card`}
                           className="w-full h-full object-cover"
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-stone-900/90 to-transparent" />
+                        <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 bg-black/30">
+                          <Maximize2 className="w-6 h-6 text-white" />
+                        </div>
                       </div>
                     )}
                     <div className="p-6 flex-1 flex flex-col">
@@ -326,6 +330,27 @@ function App() {
                 )}
               </button>
             </div>
+          </div>
+        </div>
+      )}
+      {previewImage && (
+        <div 
+          className="fixed inset-0 bg-black/90 flex items-center justify-center z-50 cursor-pointer"
+          onClick={() => setPreviewImage(null)}
+        >
+          <button
+            onClick={() => setPreviewImage(null)}
+            className="absolute top-4 right-4 text-white/70 hover:text-white transition-colors"
+          >
+            <X className="h-6 w-6" />
+          </button>
+          <div className="max-w-7xl max-h-[90vh] px-4 relative">
+            <img
+              src={previewImage}
+              alt="Business card preview"
+              className="max-w-full max-h-[90vh] object-contain rounded-lg"
+              onClick={(e) => e.stopPropagation()}
+            />
           </div>
         </div>
       )}
