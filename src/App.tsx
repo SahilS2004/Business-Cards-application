@@ -113,18 +113,18 @@ function App() {
   const totalPages = Math.ceil(cards.length / cardsPerPage);
   
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 to-slate-800">
+    <div className="min-h-screen bg-gradient-to-br from-zinc-900 to-stone-900">
       {/* Header */}
-      <header className="bg-gradient-to-r from-purple-900 via-violet-900 to-indigo-900 shadow-xl">
+      <header className="bg-gradient-to-r from-stone-900 via-neutral-900 to-zinc-900 shadow-xl border-b border-stone-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-3">
-              <Building2 className="h-8 w-8 text-purple-300" />
-              <h1 className="text-2xl font-bold text-white">Business Cards</h1>
+              <Building2 className="h-8 w-8 text-amber-300" />
+              <h1 className="text-2xl font-bold text-stone-100">Business Cards</h1>
             </div>
             <button
               onClick={() => setIsModalOpen(true)}
-              className="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-purple-600 hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-purple-900 focus:ring-purple-500 transition-colors duration-200"
+              className="inline-flex items-center px-4 py-2 border border-amber-600/20 rounded-md shadow-sm text-sm font-medium text-amber-100 bg-amber-900/20 hover:bg-amber-900/40 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-stone-900 focus:ring-amber-500 transition-colors duration-200"
             >
               <Plus className="h-5 w-5 mr-2" />
               Add Card
@@ -140,7 +140,7 @@ function App() {
             <button
               type="button"
               onClick={handleBack}
-              className="inline-flex items-center px-4 py-2 border border-slate-600 rounded-md shadow-sm text-sm font-medium text-slate-200 bg-slate-800 hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-slate-900 focus:ring-purple-500 transition-colors duration-200"
+              className="inline-flex items-center px-4 py-2 border border-stone-700 rounded-md shadow-sm text-sm font-medium text-stone-300 bg-stone-800/50 hover:bg-stone-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-stone-900 focus:ring-amber-500 transition-colors duration-200"
             >
               <ArrowLeft className="h-5 w-5 mr-2" />
               Back
@@ -149,13 +149,13 @@ function App() {
           <div className="flex-1">
             <div className="relative">
               <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                <Search className="h-5 w-5 text-slate-400" />
+                <Search className="h-5 w-5 text-stone-400" />
               </div>
               <input
                 type="text"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="block w-full pl-10 pr-3 py-2 border border-slate-600 rounded-md leading-5 bg-slate-800 text-slate-200 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500 transition-colors duration-200"
+                className="block w-full pl-10 pr-3 py-2 border border-stone-700 rounded-md leading-5 bg-stone-800/30 text-stone-200 placeholder-stone-500 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-amber-500 transition-colors duration-200"
                 placeholder="Search by name, company, or designation..."
               />
             </div>
@@ -163,7 +163,7 @@ function App() {
           <button
             type="submit"
             disabled={loading || !searchQuery.trim()}
-            className="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-purple-600 hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-slate-900 focus:ring-purple-500 disabled:opacity-50 disabled:cursor-not-allowed transition-colors duration-200"
+            className="inline-flex items-center px-4 py-2 border border-amber-600/20 rounded-md shadow-sm text-sm font-medium text-amber-100 bg-amber-900/20 hover:bg-amber-900/40 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-stone-900 focus:ring-amber-500 disabled:opacity-50 disabled:cursor-not-allowed transition-colors duration-200"
           >
             {loading ? <Loader2 className="h-5 w-5 animate-spin" /> : 'Search'}
           </button>
@@ -178,13 +178,13 @@ function App() {
           </div>
         ) : loading ? (
           <div className="flex justify-center py-12">
-            <Loader2 className="h-8 w-8 animate-spin text-purple-500" />
+            <Loader2 className="h-8 w-8 animate-spin text-amber-500" />
           </div>
         ) : (
           <>
             <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-8">
               {paginatedCards.map((card) => (
-                <div key={card.id} className="bg-slate-800/50 backdrop-blur-sm rounded-xl shadow-xl overflow-hidden hover:shadow-2xl hover:scale-[1.02] transition-all duration-300 border border-slate-700/50">
+                <div key={card.id} className="bg-gradient-to-br from-stone-900/90 to-zinc-900/90 backdrop-blur-sm rounded-xl shadow-xl overflow-hidden hover:shadow-2xl hover:scale-[1.02] transition-all duration-300 border border-stone-800/50">
                   <div className="flex flex-col h-full">
                     {card.visiting_card_url && (
                       <div className="relative h-48">
@@ -193,23 +193,23 @@ function App() {
                           alt={`${card.name}'s visiting card`}
                           className="w-full h-full object-cover"
                         />
-                        <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent" />
+                        <div className="absolute inset-0 bg-gradient-to-t from-stone-900/90 to-transparent" />
                       </div>
                     )}
                     <div className="p-6 flex-1 flex flex-col">
-                      <h3 className="text-xl font-semibold text-white mb-1">{card.name}</h3>
-                      <p className="text-purple-400 font-medium">{card.designation}</p>
-                      <p className="text-slate-400 mt-2">{card.company}</p>
+                      <h3 className="text-xl font-semibold text-stone-100 mb-1">{card.name}</h3>
+                      <p className="text-amber-400/90 font-medium">{card.designation}</p>
+                      <p className="text-stone-400 mt-2">{card.company}</p>
                       
                       <div className="mt-4 space-y-3 flex-1">
                         {card.email && (
-                          <div className="flex items-center text-slate-300 hover:text-purple-400 transition-colors duration-200">
+                          <div className="flex items-center text-stone-300 hover:text-amber-400 transition-colors duration-200">
                             <Mail className="h-4 w-4 mr-2" />
                             <a href={`mailto:${card.email}`}>{card.email}</a>
                           </div>
                         )}
                         {card.phone && (
-                          <div className="flex items-center text-slate-300 hover:text-purple-400 transition-colors duration-200">
+                          <div className="flex items-center text-stone-300 hover:text-amber-400 transition-colors duration-200">
                             <Phone className="h-4 w-4 mr-2" />
                             <a href={`tel:${card.phone.split(',')[0]}`}>
                               {card.phone.split(',').join(' / ')}
@@ -217,7 +217,7 @@ function App() {
                           </div>
                         )}
                         {card.website && (
-                          <div className="flex items-center text-slate-300 hover:text-purple-400 transition-colors duration-200">
+                          <div className="flex items-center text-stone-300 hover:text-amber-400 transition-colors duration-200">
                             <Globe className="h-4 w-4 mr-2" />
                             <a href={card.website} target="_blank" rel="noopener noreferrer">
                               {card.website}
@@ -225,7 +225,7 @@ function App() {
                           </div>
                         )}
                         {card.address && (
-                          <div className="flex items-center text-slate-300">
+                          <div className="flex items-center text-stone-300">
                             <MapPin className="h-4 w-4 mr-2" />
                             <span>{card.address}</span>
                           </div>
@@ -244,7 +244,7 @@ function App() {
                   <button
                     onClick={() => setPage(p => Math.max(1, p - 1))}
                     disabled={page === 1}
-                    className="relative inline-flex items-center px-3 py-2 rounded-l-md border border-slate-600 bg-slate-800 text-sm font-medium text-slate-300 hover:bg-slate-700 disabled:opacity-50 transition-colors duration-200"
+                    className="relative inline-flex items-center px-3 py-2 rounded-l-md border border-stone-700 bg-stone-800/50 text-sm font-medium text-stone-300 hover:bg-stone-800 disabled:opacity-50 transition-colors duration-200"
                   >
                     Previous
                   </button>
@@ -254,8 +254,8 @@ function App() {
                       onClick={() => setPage(i + 1)}
                       className={`relative inline-flex items-center px-4 py-2 border text-sm font-medium transition-colors duration-200 ${
                         page === i + 1
-                          ? 'z-10 bg-purple-900 border-purple-500 text-white'
-                          : 'border-slate-600 bg-slate-800 text-slate-300 hover:bg-slate-700'
+                          ? 'z-10 bg-amber-900/40 border-amber-600/20 text-amber-100'
+                          : 'border-stone-700 bg-stone-800/50 text-stone-300 hover:bg-stone-800'
                       }`}
                     >
                       {i + 1}
@@ -264,7 +264,7 @@ function App() {
                   <button
                     onClick={() => setPage(p => Math.min(totalPages, p + 1))}
                     disabled={page === totalPages}
-                    className="relative inline-flex items-center px-3 py-2 rounded-r-md border border-slate-600 bg-slate-800 text-sm font-medium text-slate-300 hover:bg-slate-700 disabled:opacity-50 transition-colors duration-200"
+                    className="relative inline-flex items-center px-3 py-2 rounded-r-md border border-stone-700 bg-stone-800/50 text-sm font-medium text-stone-300 hover:bg-stone-800 disabled:opacity-50 transition-colors duration-200"
                   >
                     Next
                   </button>
@@ -274,60 +274,61 @@ function App() {
           </>
         )}
       </main>
-  {/* Update the modal content */}
-  {isModalOpen && (
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-      <div className="bg-slate-800 rounded-lg p-6 w-full max-w-md mx-4 relative border border-slate-700 shadow-xl">
-        <button
-          onClick={() => {
-            setIsModalOpen(false);
-            setSelectedFileName('');
-          }}
-          className="absolute top-4 right-4 text-slate-400 hover:text-white transition-colors"
-        >
-          <X className="h-5 w-5" />
-        </button>
-        
-        <h2 className="text-xl font-semibold text-white mb-4">Upload Business Card</h2>
-        
-        <div className="space-y-4">
-          <div className="border-2 border-dashed border-slate-600 rounded-lg p-6 text-center hover:border-purple-500 transition-colors">
-            <input
-              type="file"
-              id="fileInput"
-              accept="image/*"
-              className="hidden"
-              onChange={handleFileSelect}
-            />
-            <label
-              htmlFor="fileInput"
-              className="cursor-pointer flex flex-col items-center space-y-2"
-            >
-              <Upload className="h-8 w-8 text-slate-400" />
-              <span className="text-sm text-slate-300">
-                {selectedFileName || "Click to upload image"}
-              </span>
-            </label>
-          </div>
 
-          <button
-            onClick={uploadImage}
-            disabled={!selectedFileName || isUploading}
-            className="w-full inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-purple-600 hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-500 disabled:opacity-50 disabled:cursor-not-allowed transition-colors duration-200"
-          >
-            {isUploading ? (
-              <>
-                <Loader2 className="h-4 w-4 mr-2 animate-spin" />
-                Uploading...
-              </>
-            ) : (
-              'Upload'
-            )}
-          </button>
+      {/* Modal */}
+      {isModalOpen && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+          <div className="bg-gradient-to-br from-stone-900 to-zinc-900 rounded-lg p-6 w-full max-w-md mx-4 relative border border-stone-800 shadow-xl">
+            <button
+              onClick={() => {
+                setIsModalOpen(false);
+                setSelectedFileName('');
+              }}
+              className="absolute top-4 right-4 text-stone-400 hover:text-white transition-colors"
+            >
+              <X className="h-5 w-5" />
+            </button>
+            
+            <h2 className="text-xl font-semibold text-stone-100 mb-4">Upload Business Card</h2>
+            
+            <div className="space-y-4">
+              <div className="border-2 border-dashed border-stone-700 rounded-lg p-6 text-center hover:border-amber-500/50 transition-colors">
+                <input
+                  type="file"
+                  id="fileInput"
+                  accept="image/*"
+                  className="hidden"
+                  onChange={handleFileSelect}
+                />
+                <label
+                  htmlFor="fileInput"
+                  className="cursor-pointer flex flex-col items-center space-y-2"
+                >
+                  <Upload className="h-8 w-8 text-stone-400" />
+                  <span className="text-sm text-stone-300">
+                    {selectedFileName || "Click to upload image"}
+                  </span>
+                </label>
+              </div>
+
+              <button
+                onClick={uploadImage}
+                disabled={!selectedFileName || isUploading}
+                className="w-full inline-flex items-center justify-center px-4 py-2 border border-amber-600/20 rounded-md shadow-sm text-sm font-medium text-amber-100 bg-amber-900/20 hover:bg-amber-900/40 focus:outline-none focus:ring-2 focus:ring-amber-500 disabled:opacity-50 disabled:cursor-not-allowed transition-colors duration-200"
+              >
+                {isUploading ? (
+                  <>
+                    <Loader2 className="h-4 w-4 mr-2 animate-spin" />
+                    Uploading...
+                  </>
+                ) : (
+                  'Upload'
+                )}
+              </button>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
-  )}
+      )}
     </div>
   );
 }
